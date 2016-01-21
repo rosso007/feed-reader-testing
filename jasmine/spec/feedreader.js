@@ -92,16 +92,17 @@ $(function () {
         beforeEach(function (done) {
             $('.feed').empty();
             loadFeed(0, function () {
-                beforeFeed = $( "div.feed" ).html();
+                beforeFeed = $("div.feed").html();
                 done();
             });
         });
-        it('changes the content', function () {
+        it('changes the content', function (done) {
             $('.feed').empty();
             loadFeed(1, function () {
-                afterFeed = $( "div.feed" ).html();
+                afterFeed = $("div.feed").html();
+                expect(beforeFeed).not.toEqual(afterFeed);
+                done();
             });
-            expect(beforeFeed).not.toEqual(afterFeed);
         });
     });
 }());
